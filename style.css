@@ -1,0 +1,45 @@
+:root{--bg:#f6f7f4;--card:#fff;--ink:#1b2a2f;--mute:#5d6b70;--line:#dde2df;--brand:#0f766e;--good:#166534;--goodbg:#dcfce7;--bad:#9f1239;--badbg:#ffe4e6;--warn:#b45309}
+:root[data-theme=dark]{--bg:#101716;--card:#182321;--ink:#e6efed;--mute:#9bb0ac;--line:#2a3a37;--brand:#2dd4bf;--good:#86efac;--goodbg:#14532d;--bad:#fda4af;--badbg:#4c0519;--warn:#fbbf24}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1,h2,h3,h4,button,label,.chips,.msg{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.top{max-width:1100px;margin:0 auto;padding:32px 20px 8px;position:relative}
+.top h1{margin:0 0 4px;font-size:2rem}
+.top p{margin:0;color:var(--mute);max-width:60ch}
+#themeBtn{position:absolute;right:20px;top:32px}
+main{max-width:1100px;margin:0 auto;padding:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;align-items:start}
+.inputs{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+label{display:block;margin:16px 0 6px;font-weight:600;font-size:.9rem}
+textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,sans-serif;resize:vertical}
+.drop{border:2px dashed var(--line);border-radius:8px;padding:22px;text-align:center;display:flex;flex-direction:column;gap:4px;cursor:pointer;color:var(--mute)}
+.drop:hover,.drop.over,.drop:focus-visible{border-color:var(--brand);outline:none;background:var(--bg)}
+.drop strong{color:var(--ink)}
+.row{display:flex;gap:10px;margin-top:16px}
+button{background:var(--brand);color:#fff;border:0;border-radius:6px;padding:10px 18px;font-weight:600;font-size:.95rem;cursor:pointer}
+:root[data-theme=dark] button{color:#062b27}
+button.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand)}
+button:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.msg{margin:10px 0 0;color:var(--bad);font-size:.9rem;min-height:1.2em}
+.results{display:flex;flex-direction:column;gap:16px}
+.scorebar{display:flex;gap:22px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.scorebar h2{margin:0}.scorebar p{margin:2px 0 10px;color:var(--mute)}
+.ring{--p:0;--c:var(--brand);width:120px;height:120px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--c) calc(var(--p)*1%),var(--line) 0)}
+.ring span{width:94px;height:94px;border-radius:50%;background:var(--card);display:grid;place-items:center;font:700 2rem system-ui,sans-serif}
+.breakdown{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.bar{display:grid;grid-template-columns:150px 1fr 42px;gap:10px;align-items:center;font:.88rem system-ui,sans-serif}
+.bar i{display:block;height:9px;background:var(--line);border-radius:5px;overflow:hidden}
+.bar b{display:block;height:100%;background:var(--brand);transition:width .5s}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.panel h3{margin:0 0 10px}.panel h4{margin:14px 0 6px;font-size:.85rem;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{padding:3px 10px;border-radius:99px;border:1px solid var(--line);font-size:.85rem}
+.chips .ok{background:var(--goodbg);color:var(--good);border-color:transparent}
+.chips .no{background:var(--badbg);color:var(--bad);border-color:transparent}
+.chips.good span{background:var(--goodbg);color:var(--good);border-color:transparent}
+.chips.bad span{background:var(--badbg);color:var(--bad);border-color:transparent}
+.skillrow{margin-bottom:10px}.skillrow b{font:600 .85rem system-ui,sans-serif;display:block;margin-bottom:4px}
+ul{padding-left:20px;margin:0}li{margin-bottom:8px}
+li.high::marker{color:var(--bad)}li.med::marker{color:var(--warn)}li.low::marker{color:var(--good)}
+@media(max-width:860px){main{grid-template-columns:1fr}.bar{grid-template-columns:110px 1fr 38px}#themeBtn{position:static;margin-top:10px}}
+@media print{.inputs,#themeBtn,#printBtn{display:none}main{display:block}}
+@media(prefers-reduced-motion:reduce){.bar b{transition:none}}
