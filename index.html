@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resume Analyzer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Resume Analyzer</h1>
+  <p>Check ATS readiness, match a job description, and fix weak spots. Everything runs in your browser; nothing is uploaded.</p>
+  <button id="themeBtn" class="ghost" aria-label="Toggle dark mode">Dark mode</button>
+</header>
+
+<main>
+  <section class="inputs">
+    <div id="drop" class="drop" tabindex="0">
+      <strong>Drop your resume here</strong>
+      <span>PDF, DOCX or TXT, or <u>browse</u></span>
+      <input type="file" id="file" accept=".pdf,.docx,.txt" hidden>
+    </div>
+    <label for="resume">Resume text</label>
+    <textarea id="resume" rows="12" placeholder="Or paste your resume text here"></textarea>
+    <label for="jd">Job description (optional, enables keyword matching)</label>
+    <textarea id="jd" rows="8" placeholder="Paste the job posting here"></textarea>
+    <div class="row">
+      <button id="analyze">Analyze resume</button>
+      <button id="clear" class="ghost">Clear</button>
+    </div>
+    <p id="msg" class="msg" role="status"></p>
+  </section>
+
+  <section id="results" class="results" hidden>
+    <div class="scorebar">
+      <div class="ring" id="ring"><span id="scoreNum">0</span></div>
+      <div>
+        <h2 id="verdict"></h2>
+        <p id="verdictSub"></p>
+        <button id="printBtn" class="ghost">Save report as PDF</button>
+      </div>
+    </div>
+    <div id="breakdown" class="breakdown"></div>
+    <div class="panel"><h3>Contact and sections</h3><div id="sections" class="chips"></div></div>
+    <div class="panel" id="matchPanel" hidden>
+      <h3>Job match: <span id="matchPct"></span></h3>
+      <h4>Matched keywords</h4><div id="matched" class="chips good"></div>
+      <h4>Missing keywords</h4><div id="missing" class="chips bad"></div>
+    </div>
+    <div class="panel"><h3>Skills found</h3><div id="skills"></div></div>
+    <div class="panel"><h3>Suggestions</h3><ul id="tips"></ul></div>
+    <div class="panel"><h3>Stats</h3><div id="stats" class="chips"></div></div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
